@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='footer-basic-centered.css') }}">
+
+    {% if title %}
+        <title>Gym Mate - About</title>
+    {% else %}
+        <title>Gym Mate</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">Gym Mate</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <!--<a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>-->
+              <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
+              <a class="nav-item nav-link" href="{{ url_for('video') }}">Videos</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+       
+      <h1 style="text-align: center;margin-bottom: 40px;margin-top: 40px;">Welcome to Gym Mate Your Personalise Training App</h1>
+
+
+    <div class='container'>
+
+    <div class="row" style="margin-top: 30px">
+    	<p style="font-size: 20px">With our experience and expertise in the fitness industry, Gym Mate can  assured to get nothing but only the best you deserve which is top notch quality and excellent-grade service. While there are many gym equipment retailers out there in the market today, Gym and Fitness boasts to have the biggest and trusted brands included in the line up wherein all of which you can purchase for a fraction of the price our competitors are offering. We also have flexible finance options available so don't you worry about not affording the equipment you like. Our finance options will have you covered so just focus on getting bigger and stronger.</p>
+    </div>
+    <div class="row" style="margin-top:80px;">
+    	<iframe width="1080" height="640" src="https://www.youtube.com/embed/9E_wvLP2sMc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div class="row" style="margin-top:80px;">
+    	<iframe width="1080" height="640" src="https://www.youtube.com/embed/8ixGFtK-MDc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    
+ 
+   </div>
+    
+      	<footer class="footer-basic-centered">
+
+			<p class="footer-company-motto"> <b>GYM Mate </b>- Your Personalise Training App</p>
+
+			<p class="footer-links">
+				<a href="{{ url_for('home') }}">Home</a>
+				·
+				<a href="{{ url_for('video') }}">Videos</a>
+				·
+				<a href="{{ url_for('about') }}">Pricing</a>
+				·
+				<a href="{{ url_for('about') }}">About</a>
+				·
+				<a href="{{ url_for('logout') }}">Logout</a>
+			</p>
+
+			<p class="footer-company-name">Creator &copy; Raghav Saxena</p>
+
+		</footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

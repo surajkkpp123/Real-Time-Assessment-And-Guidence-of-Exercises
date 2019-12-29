@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    {% if title %}
+        <title>Gym Mate - Home</title>
+    {% else %}
+        <title>Gym Mate</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">Gym Mate</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <!--<a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>-->
+              <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
+              <a class="nav-item nav-link" href="{{ url_for('video') }}">Videos</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+       
+      <h1 style="text-align: center;margin-bottom: 40px;margin-top: 40px;">Welcome to Gym Mate Your Personalise Training App</h1>
+
+
+    <div class='container'>
+
+    <div class="row">
+	 <iframe width="1080" height="640" src="https://www.youtube.com/embed/X_9VoqR5ojM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+     </div>
+
+
+    <h1 style="margin-top: 80px;"> Record Your Video </h1>
+
+    <div class="row" style="margin-top: 30px" >
+  
+
+    <a href="http://192.168.43.186:8000/Server" class="btn btn-info" role="button" style="margin-right: 10px;">Start Sending Server</a>
+   
+    <a href="{{ url_for('client') }}" class="btn btn-info" role="button" >Record</a>
+
+   </div>
+
+    <h1 style="margin-top: 60px;">Download your Standard Video</h1>
+
+    <div class='row' style="margin-top: 30px;">
+	  <a href="{{ url_for('server') }}" class="btn btn-info" role="button" style="margin-right: 10px;">Start Recieving Server</a>
+ 
+      <a href="http://192.168.43.186:8000/Client" class="btn btn-info" role="button">Recieve Video</a>
+
+   </div>
+
+   <h1 style="margin-top: 60px;">View Your Standard Video</h1>
+
+    <div class='row' style="margin-top: 30px;">
+    <a href="{{ url_for('display') }}" class="btn btn-info" role="button" style="margin-right: 10px;">Your Video</a>
+   </div>
+    
+
+    <h1 style="margin-top: 60px;">Rename your Video as <b>input.mp4</b> and Upload</h1>
+   <div class="row" style="margin-top: 30px;">
+   <div class="col-lg-12">
+    <p>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+         <ul class=flashes>
+         {% for message in messages %}
+          <li>{{ message }}</li>
+           {% endfor %}
+            </ul>
+          {% endif %}
+         {% endwith %}
+        </p>
+     <form method="post" action="/uploader" enctype="multipart/form-data">
+    <dl>
+    <p>
+      <input type="file" name="file" autocomplete="off" required>
+    </p>
+    </dl>
+    <p>
+    <input type="submit" value="Submit">
+  </p>
+   </form>
+ </div>
+   </div>
+
+    <h1 style="text-align: center; margin-top: 80px;"><b>  Instructions </b></h1>
+
+   <div class='row' style="margin-top: 20px;">
+    <h3 style="text-align: center;">Right Bicep Curl</h3>
+    <div class='col-lg-12' style="margin-top: 20px;">
+    <ul>
+      <li>Recording will be for 3 mins</li>
+      <li>Stand up straight with a dumbbell in each hand at arm's length. Keep your elbows close to your torso and rotate the palms of your hands until they are facing forward. This will be your starting position.</li>
+      <li>Now,keeping the upper arms stationary, exhale and curl the weights while contracting your biceps.Continue to raise the weights until your biceps are fully contracted and the dumbbells are at shoulder level. Hold the contracted position for a brief pause as you squeeze your biceps.</li>
+      <li>Then, inhale and slowly begin to lower the dumbbells back to the starting position.</li>
+
+    </ul>
+  </div>
+   </div>
+
+   <div class='row' style="margin-top: 20px;">
+    <h3 style="text-align: center;">Push Ups</h3>
+    <div class='col-lg-12' style="margin-top: 20px;">
+    <ul>
+      <li>Record your RHS view</li>
+      <li>Recording will be for 3 mins</li>
+      <li>Get on the floor on all fours, positioning your hands slightly wider than your shoulders.</li>
+      <li>Extend your legs back so that you are balanced on your hands and toes. Keep your body in a straight line from head to toe without sagging in the middle or arching your back.</li>
+      <li>Before you begin any movement, contract your abs and tighten your core by pulling your belly button toward your spine. Keep a tight core throughout the entire pushup.</li>
+      <li>Inhale as you slowly bend your elbows and lower yourself until your elbows are at a 90-degree angle.</li>
+      <li>Exhale as you begin contracting your chest muscles and pushing back up through your hands to the start position. Don't lock out the elbows; keep them slightly bent.</li>
+    </ul>
+  </div>
+   </div>
+
+   <div class='row' style="margin-top: 20px;">
+    <h3 style="text-align: center;">Pull Ups</h3>
+    <div class='col-lg-12' style="margin-top: 20px;">
+    <ul>
+      <li>Record your RHS view</li>
+      <li>Recording will be for 3 mins</li>
+      <li>Grab the pullup bar with your palms down (shoulder-width grip).</li> 
+      <li>Hang to the pullup-bar with straight arms and your legs off the floor</li> 
+      <li>Pull yourself up by pulling your elbows down to the floor </li>
+      <li>Go all the way up until your chin passes the be bar</li> 
+      <li>Lower yourself until your arms are straight</li>
+    </ul>
+  </div>
+   </div>
+
+   <div class='row' style="margin-top: 20px;">
+    <h3 style="text-align: center;">Deep Squats</h3>
+    <div class='col-lg-12' style="margin-top: 20px;">
+    <ul>
+      <li>Recording will be for 3 mins</li>
+      <li>Put your arms straight out in front of you, parallel to the ground. Keep your chest up and proud, and your spine in a neutral position.</li>
+      <li>Your weight is on your feet – it should be on the heels and the balls of your feet, as if they were pasted to the ground.</li>
+      <li>Keep your entire body tight the entire time, your core flexed like you’re bracing to be punched in the gut!</li>
+      <li>Breathe deeply into your stomach, break at your hip and push your butt back. Keep sending your hips backwards as your knees begin to bend. 
+                It’s important to start with your hips back, and not by bending your knees</li>
+      <li>As you squat down, focus on keeping your knees in line with your feet.</li> 
+      <li>Squat down until your hip joint is lower than your knees.</li>
+      <li>Keeping everything tight, breathe out and drive through your heels</li> 
+      <li>Drive your knees outward (away from each other) the same way you did on the way down, and squeeze your butt at the top to make sure you’re using your glutes.</li>
+    </ul>
+  </div>
+   </div>
+
+   <div class='row' style="margin-top: 20px;">``
+
+    <h3 style="text-align: center;">High Plank</h3>
+    <div class='col-lg-12' style="margin-top: 20px;">
+    <ul>
+      <li>Record your RHS view</li>
+      <li>Recording will be for 3 mins</li>
+      <li>Plant hands directly under shoulders (slightly wider than shoulder width) like you’re about to do a push up.</li>
+      <li>Ground toes into the floor and squeeze glutes to stabilize your body. Your legs should be working, too — be careful not to lock or hyperextend your knees.</li>
+      <li>Neutralize your neck and spine by looking at a spot on the floor about a foot beyond your hands.Your head should be in line with your back.</li>
+      <li>Hold the position for 20 seconds. As you get more comfortable with the move, hold your plank for as long as possible without compromising your form or breath.</li>
+
+    </ul>
+  </div>
+   </div>
+
+   <div class='row' style="margin-top: 20px;">
+    <h3 style="text-align: center;">Sit Ups</h3>
+    <div class='col-lg-12' style="margin-top: 20px;">
+    <ul>
+      <li>Record your LHS view</li>
+      <li>Recording will be for 3 mins</li>
+      <li>Start by lying on your back with your knees bent at 90 degree angle with your feet flat on the floor.</li>
+      <li>Lift your torso up as close to your thighs as possible. Do this with a smooth, steady motion, keeping your feet flat on the floor.</li>
+      <li>Lower your torso down to the floor so you’re back in the starting position.</li> 
+
+    </ul>
+  </div>
+   </div>
+
+   <div class='row' style="margin-top: 20px;">
+    <h3 style="text-align: center;">Leg Raise</h3>
+    <div class='col-lg-12' style="margin-top: 20px;">
+    <ul>
+      <li>Record your LHS view</li>
+      <li>Recording will be for 3 mins</li>
+      <li>Lie on your back, legs straight and together</li>
+      <li>Keep your legs straight and lift them all the way up to the ceiling until your butt comes off         the floor.</li>
+      <li>Slowly lower your legs back down till they’re just above the floor. Hold for a moment.</li>
+      <li> Raise your legs back up. Repeat.</li>
+    </ul>
+  </div>
+   </div>
+   </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
